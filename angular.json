@@ -15,11 +15,10 @@
 			"prefix": "app",
 			"architect": {
 				"build": {
-					"builder": "@angular-devkit/build-angular:application",
+					"builder": "ngx-build-plus:browser",
 					"options": {
 						"outputPath": "dist/boot-camp",
 						"index": "projects/boot-camp/src/index.html",
-						"browser": "projects/boot-camp/src/main.ts",
 						"polyfills": [
 							"zone.js"
 						],
@@ -28,13 +27,17 @@
 						"assets": [
 							{
 								"glob": "**/*",
-								"input": "projects/boot-camp/public"
+								"input": "projects/boot-camp/public",
+								"output": "."
 							}
 						],
 						"styles": [
 							"projects/boot-camp/src/styles.scss"
 						],
-						"scripts": []
+						"scripts": [],
+						"main": "projects/boot-camp/src/main.ts",
+						"extraWebpackConfig": "projects/boot-camp/webpack.config.js",
+						"commonChunk": false
 					},
 					"configurations": {
 						"production": {
@@ -51,7 +54,8 @@
 									"maximumError": "4kB"
 								}
 							],
-							"outputHashing": "all"
+							"outputHashing": "all",
+							"extraWebpackConfig": "projects/boot-camp/webpack.prod.config.js"
 						},
 						"development": {
 							"optimization": false,
@@ -63,16 +67,22 @@
 					"defaultConfiguration": "production"
 				},
 				"serve": {
-					"builder": "@angular-devkit/build-angular:dev-server",
+					"builder": "ngx-build-plus:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "boot-camp:build:production"
+							"buildTarget": "boot-camp:build:production",
+							"extraWebpackConfig": "projects/boot-camp/webpack.prod.config.js"
 						},
 						"development": {
 							"buildTarget": "boot-camp:build:development"
 						}
 					},
-					"defaultConfiguration": "development"
+					"defaultConfiguration": "development",
+					"options": {
+						"port": 4200,
+						"publicHost": "http://localhost:4200",
+						"extraWebpackConfig": "projects/boot-camp/webpack.config.js"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n"
