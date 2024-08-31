@@ -9,7 +9,7 @@ export class CategoryRequestService {
 
   constructor(private http: HttpClient) { }
 
-  addCategories(category: CategoryRequest){
+  addCategory(category: CategoryRequest){
     return this.http.post(
       'https://dev.tks.co.th/codepulseapi/api/Categories',
       category)

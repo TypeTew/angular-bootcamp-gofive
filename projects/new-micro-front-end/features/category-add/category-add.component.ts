@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { CategoryRequest } from '../../models/category-request';
 import { FormsModule } from '@angular/forms';
+import { firstValueFrom } from 'rxjs';
+import { CategoryRequestService } from '../../service/category-request.service';
 
 @Component({
   selector: 'app-category-add',
@@ -12,8 +14,18 @@ import { FormsModule } from '@angular/forms';
 export class CategoryAddComponent {
   public category: CategoryRequest = new CategoryRequest();
 
-  constructor(){
+  constructor(private categoriesService: CategoryRequestService){
     this.category.name = 'Category Name';
+  }
+
+  addCategory(){
+    console.log(' post category => ', this.category);
+    firstValueFrom(this.categoriesService.addCategory(this.category)).then(
+      (res) => {
+        console.log('response =>',res)
+      },
+    );
+  
   }
 
 
