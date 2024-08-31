@@ -1,15 +1,15 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-          class="me-2"
-          height="20"
-          alt="MDB Logo"
-          loading="lazy"
-        />
-        <small>Go five bootcamp</small>
-      </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" [routerLink]="['/categories']">Features</a>
+        <a class="nav-link" [routerLink]="['/categories/add']">Pricing</a>
+      </div>
     </div>
-  </nav>
+  </div>
+</nav>

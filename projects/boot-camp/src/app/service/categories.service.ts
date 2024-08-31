@@ -12,4 +12,11 @@ export class CategoriesService {
   getCategories(){
     return this.http.get<CategoriesModel[]>('https://dev.tks.co.th/codepulseapi/api/Categories')
   }
+
+
+  DeleteCategories(Id : string){
+    return this.http.delete('https://dev.tks.co.th/codepulseapi/api/Categories/'+Id);
+
+
+  }
 }
